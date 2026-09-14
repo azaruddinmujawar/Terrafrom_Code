@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('YOUR_FIRST_CREDENTIAL_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('YOUR_SECOND_CREDENTIAL_ID')
+    }
+
+    stages {
+
+        stage('Terraform Version') {
+            steps {
+                bat 'terraform version'
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                dir('Terafrom_Test1/ENV/dev') {
+                    bat 'terraform init'
+                }
+            }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                dir('Terafrom_Test1/ENV/dev') {
+                    bat 'terraform plan'
+                }
+            }
+        }
+
+          stage('Terraform apply') {
+            steps {
+                dir('Terafrom_Test1/ENV/dev') {
+                    bat 'terraform apply -auto-approve'
+                }
+            }
+        }
+
+    }
+}
