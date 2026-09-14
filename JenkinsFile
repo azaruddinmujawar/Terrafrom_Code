@@ -16,7 +16,7 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                dir('Terafrom_Test1/ENV/dev') {
+                dir('ENV/dev') {
                     bat 'terraform init'
                 }
             }
@@ -24,7 +24,7 @@ pipeline {
 
         stage('Terraform Plan') {
             steps {
-                dir('Terafrom_Test1/ENV/dev') {
+                dir('ENV/dev') {
                     bat 'terraform plan'
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
 
           stage('Terraform apply') {
             steps {
-                dir('Terafrom_Test1/ENV/dev') {
+                dir('ENV/dev') {
                     bat 'terraform apply -auto-approve'
                 }
             }
