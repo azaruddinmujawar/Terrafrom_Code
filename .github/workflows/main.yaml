@@ -28,13 +28,13 @@ jobs:
         run: terraform version
 
       - name: Terraform Init
-        working-directory: terraform_project/ENV/dev
+        working-directory: ENV/dev
         run: terraform init
 
       - name: Terraform Plan
-        working-directory: terraform_project/ENV/dev
+        working-directory: ENV/dev
         run: terraform plan
 
       - name: Terraform Apply
-        working-directory: terraform_project/ENV/dev
+        working-directory: ENV/dev
         run: terraform apply -auto-approve
